@@ -1,0 +1,13 @@
+The following CSS code snippet demonstrates an uncommon error related to the `:focus-visible` pseudo-class.  The goal is to only style elements when they receive keyboard focus, not when they are focused via mouse or touch. However, due to a misunderstanding of how `:focus-visible` interacts with other selectors, the expected behavior might not occur.
+
+```css
+.my-element:focus {
+  outline: 2px solid blue;
+}
+
+.my-element:focus-visible {
+  box-shadow: 0 0 5px rgba(0,0,255,0.5);
+}
+```
+
+The issue is that the `:focus` selector will *always* trigger its styling, even if the focus originates from keyboard interaction.  `:focus-visible` intends to refine this, but it doesn't override `:focus`. Both styles are applied which causes undesired visual effects (double styling).
