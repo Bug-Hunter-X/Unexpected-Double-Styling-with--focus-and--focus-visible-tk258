@@ -1,0 +1,13 @@
+The solution involves a more strategic use of CSS selectors. We can use the `:focus-within` pseudo-class,  which applies the style to the parent element when any descendant element is focused. This gives more control for applying styles only with keyboard navigation.  By ordering the `:focus-within` before `:focus`, it overrides the `:focus` selector while still allowing styles to apply when a descendant is focused via the keyboard.
+
+```css
+.my-element:focus-within {
+  box-shadow: 0 0 5px rgba(0,0,255,0.5);
+}
+
+.my-element:focus {
+  outline: none; /* Remove the outline to avoid redundancy*/
+}
+```
+
+This approach ensures that only the desired `box-shadow` is applied when keyboard focus is used.  The previous `outline` is removed as well to prevent unnecessary visual redundancy.
